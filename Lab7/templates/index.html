@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            text-align: center;
+            color: white;
+            padding-top: 60px;
+        }
+
+        .box {
+            background: rgba(0,0,0,0.3);
+            padding: 30px;
+            width: 350px;
+            margin: auto;
+            border-radius: 15px;
+        }
+
+        input {
+            padding: 12px;
+            width: 80%;
+            border-radius: 8px;
+            border: none;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #0077ff;
+            color: white;
+            cursor: pointer;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h1>🌤 Weather App</h1>
+
+    <form method="POST">
+        <input type="text" name="city" placeholder="Enter city name" required>
+        <br>
+        <button type="submit">Search</button>
+    </form>
+
+    <br>
+
+    {% if weather %}
+        {% if weather.error %}
+            <h3>{{ weather.error }}</h3>
+        {% else %}
+            <h2>{{ weather.city }}</h2>
+            <p>Temperature: {{ weather.temperature }} °C</p>
+            <p>Weather: {{ weather.description }}</p>
+            <p>Humidity: {{ weather.humidity }}%</p>
+            <p>Wind Speed: {{ weather.wind }} m/s</p>
+        {% endif %}
+    {% endif %}
+
+</div>
+
+</body>
+</html>
